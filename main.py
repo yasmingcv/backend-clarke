@@ -16,6 +16,14 @@ def getFornecedores():
         providersController.getAllProviders()
     )
 
+@app.route('/fornecedores/minimo', methods=['GET'])
+def getFornecedoresPorKwhMinimum():
+    minimum_kwh = request.args.get('minimum_kwh')
+    print(minimum_kwh)
+    
+    return make_response(
+        providersController.getProvidersByKwhMinimum(minimum_kwh)
+    )
 
     
     

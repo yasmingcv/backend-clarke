@@ -16,3 +16,16 @@ def getAllProviders():
     result = cursor.fetchall()
     
     return result
+
+def getProvidersByKwhMinimum(minimumKwhLimit):
+    
+    cursor.execute(
+        '''select tbl_provider.*, tbl_state.state
+            from tbl_provider
+                inner join tbl_state
+                    on tbl_state.id = tbl_provider.id_state
+                    
+                    where minimun_kwh_limit <= %s''', (minimumKwhLimit,))
+    result = cursor.fetchall()
+    
+    return result
