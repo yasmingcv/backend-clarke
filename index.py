@@ -5,10 +5,11 @@
 
 from flask import Flask, make_response, request
 from controller import providersController
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = True
-
+CORS(app, origins='*')
 
 @app.route('/providers', methods=['GET'])
 def getFornecedores():
