@@ -7,13 +7,20 @@ import sys
 
 sys.dont_write_bytecode = True
 
-from flask import Flask, make_response, request
+from flask import Flask, make_response, request, jsonify
 from controller import providersController
 from flask_cors import CORS
 
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = True
 CORS(app, origins='*')
+
+@app.route('/', methods=['GET'])
+def hello():
+    return make_response(
+        jsonify({"message": "Olá! Bem vindo ao backend Clarke. Documentação em <github.com/yasmingcv/backend-clarke>" })
+    )
+
 
 @app.route('/providers', methods=['GET'])
 def getFornecedores():
