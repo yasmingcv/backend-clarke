@@ -9,7 +9,6 @@ from flask import jsonify
 
 
 def getAllProviders():
-    print('caiuadiuasdu')
     providers = providersDAO.getAllProviders()
     
     if not providers:
@@ -38,7 +37,6 @@ def getAllProviders():
         }), config.SUCCESS_REQUEST["status"]
         
 def getProvidersByKwhMinimum(minimumKwhLimit):
-    print(minimumKwhLimit)
     
     if(minimumKwhLimit == ''):
         return jsonify(config.ERROR_REQUIRED_FIELD), config.ERROR_REQUIRED_FIELD["status"]
