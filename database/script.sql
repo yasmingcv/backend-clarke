@@ -18,6 +18,7 @@ CREATE TABLE tbl_provider (
   average_rating FLOAT NOT NULL,
   email VARCHAR(255) NOT NULL,
   password VARCHAR(32) NOT NULL,
+  total_clients INT DEFAULT 0,
   id_state INT NOT NULL,
   
   UNIQUE INDEX (id),
@@ -55,3 +56,14 @@ CREATE TABLE tbl_client_provider (
   REFERENCES tbl_provider (id)
     
 );
+
+
+DELIMITER $$
+create trigger tgr_count_clients
+after insert on tbl_client_provider
+for each row
+BEGIN
+    update tbl_provider set total_clients = total_clients + 1
+    where id = new.id_provider;
+END;
+$$

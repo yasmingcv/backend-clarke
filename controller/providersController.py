@@ -26,7 +26,8 @@ def getAllProviders():
                   'cost_per_kwh': provider[3],
                   'minimun_kwh_limit': provider[4],
                   'average_rating': provider[5],
-                  'state': provider[9]
+                  'total_clients': provider[9],
+                  'state': provider[10]
                 }
             )
         
@@ -58,7 +59,8 @@ def getProvidersByKwhMinimum(minimumKwhLimit):
                     'cost_per_kwh': provider[3],
                     'minimun_kwh_limit': provider[4],
                     'average_rating': provider[5],
-                    'state': provider[9]
+                    'state': provider[9],
+                    'total_clients': provider[10]
                     }
                 )
             
