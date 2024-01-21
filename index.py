@@ -3,6 +3,10 @@
 # Data: 20/01/2024
 # Versão: 1.0
 
+import sys
+
+sys.dont_write_bytecode = True
+
 from flask import Flask, make_response, request
 from controller import providersController
 from flask_cors import CORS
