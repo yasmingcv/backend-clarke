@@ -10,21 +10,18 @@ app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = True
 
 
-@app.get('/fornecedores')
+@app.route('/providers', methods=['GET'])
 def getFornecedores():
-    return make_response(
-        providersController.getAllProviders()
-    )
-
-@app.route('/fornecedores/minimo', methods=['GET'])
-def getFornecedoresPorKwhMinimum():
     minimum_kwh = request.args.get('minimum_kwh')
-    print(minimum_kwh)
     
-    return make_response(
+    if(minimum_kwh):
+        return make_response(
         providersController.getProvidersByKwhMinimum(minimum_kwh)
-    )
-
-    
+        )
+    else:
+        return make_response(
+        providersController.getAllProviders()
+        )
+        
     
 app.run()
